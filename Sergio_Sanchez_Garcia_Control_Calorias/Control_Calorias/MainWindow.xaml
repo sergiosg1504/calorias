@@ -1,0 +1,38 @@
+﻿<Window x:Class="Control_Calorias.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Control_Calorias"
+        Name="miMainWindow"
+        mc:Ignorable="d"
+        Title="Control de Calorias" FontFamily="Verdana" Height="900" Width="1600" SizeChanged="Window_SizeChanged" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.025*"/>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Name="Promedio_Diario" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Visibility="Hidden"/>
+        <Button Name="NightMode" Content="🌙" Click="NightMode_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0" Height="30" Width="30" Grid.Row="1"/>
+        <Button Name="Volver" Content="Ver todo" Click="Volver_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="200" Grid.Row="1" Visibility="Hidden"/>
+        <DockPanel Grid.Column="0">
+            <Menu DockPanel.Dock="Top" Background="White">
+                <MenuItem Header="Menu" FontWeight="DemiBold">
+                    <MenuItem Header="Archivo" Click="MenuItem_Click"/>
+                    <MenuItem Header="Ver todo" Name="Control_VerTodos" Click="MenuItem_Click_VerTodos"/>
+                    <MenuItem Header="Activar cuadricula" Name="Control_Cuadricula" Click="MenuItem_Click_ActivarCuadricula"/>
+                    <MenuItem Header="Exportar" Click="MenuItem_Click_Exportar"/>
+                    <MenuItem Header="Importar" Click="MenuItem_Click_Importar"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <Grid Name="miGridCanvas" Grid.Row="2" Margin="25,0,25,35">
+            <ScrollViewer Grid.Row="2" AllowDrop="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <Canvas Name="miCanvas" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" Background="White" Visibility="Visible" SizeChanged="miCanvas_SizeChanged"/>
+            </ScrollViewer>
+        </Grid>
+        <Canvas Name="miCanvasTodos" Margin="25,0,25,35" Grid.Row="2" Background="White" Visibility="Hidden"/>
+        <Canvas Name="miCanvasDia" Margin="25,0,25,35" Grid.Row="2" Background="White" Visibility="Hidden"/>
+    </Grid>
+</Window>
